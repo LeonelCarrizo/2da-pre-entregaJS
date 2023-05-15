@@ -1,5 +1,14 @@
 const carrito = [];
 
+const comprar = () => {
+    const productosBaratos = confirm('Ordena de mayor a menor por precio');
+    if (productosBaratos) {
+        ordenarMayorMenor()
+    } else {
+        ordenarMenorMayor()
+    }
+};
+
 const ordenarMenorMayor = () => {
     productos.sort((a, b) => a.precio - b.precio)
     mostrarListaOrdenada()
@@ -35,7 +44,7 @@ const comprarProductos = (listaDeProductos) => {
             alert('El producto no se encuentra disponible!');
         }
 
-        seguirComprando = confirm('¿Desea agregar otro producto?')
+        seguirComprando = confirm('¿Desea agregar otro producto? Presione ACEPTAR por "si" o CANCELAR por "no"')
     } while (seguirComprando);
 
     confirmarCompra();
@@ -70,7 +79,7 @@ const confirmarCompra = () => {
         return '- '+producto.nombre+' | Cantidad: '+producto.cantidad
     });
 
-    const confirmar = confirm('Checkout: '
+    const confirmar = confirm('Verificar: '
         +'\n\n'+listaProductos.join('\n')
         +'\n\nPara continuar presione "Aceptar" sino "Cancelar" para eliminar productos del carrito.'
     );
@@ -95,13 +104,6 @@ const finalizarCompra = (listaProductos) => {
     );
 };
 
-const comprar = () => {
-    const productosBaratos = confirm('Ordena de mayor a menor por precio');
-    if (productosBaratos) {
-        ordenarMayorMenor()
-    } else {
-        ordenarMenorMayor()
-    }
-};
+
 
 comprar()
